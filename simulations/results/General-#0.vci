@@ -1,25 +1,58 @@
-                                                                
+file 7079 1512744811                                            
 version 2
-run General-0-20171129-10:28:28-12160
+run General-0-20171208-14:53:21-8928
 attr configname General
-attr datetime 20171129-10:28:28
+attr datetime 20171208-14:53:21
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 12160
+attr processid 8928
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
-param **.client1.numPingApps 1
-param **.client1.pingApp[*].destAddr "\"server1\""
+param **.client1.numTcpApps 1
+param **.client1.tcpApp[*].active true
+param **.client1.tcpApp[*].connectAddress "\"game1\""
+param **.client1.tcpApp[*].connectPort 80
+param **.client1.tcpApp[*].localAddress "\"\""
+param **.client1.tcpApp[*].localPort 2000
+param **.client1.tcpApp[*].sendBytes 500MiB
+param **.client1.tcpApp[*].sendScript "\"\""
+param **.client1.tcpApp[*].tClose 0
+param **.client1.tcpApp[*].tOpen 1.0s
+param **.client1.tcpApp[*].tSend 1.1s
+param **.client1.tcpApp[*].typename "\"TCPSessionApp\""
+param **.client2.numTcpApps 1
+param **.client2.tcpApp[*].active true
+param **.client2.tcpApp[*].connectAddress "\"game2\""
+param **.client2.tcpApp[*].connectPort 80
+param **.client2.tcpApp[*].localAddress "\"\""
+param **.client2.tcpApp[*].localPort 2000
+param **.client2.tcpApp[*].sendBytes 500MiB
+param **.client2.tcpApp[*].sendScript "\"\""
+param **.client2.tcpApp[*].tClose 0
+param **.client2.tcpApp[*].tOpen 1.0s
+param **.client2.tcpApp[*].tSend 1.1s
+param **.client2.tcpApp[*].typename "\"TCPSessionApp\""
+param **.eth[*].queue.*.frameCapacity 10
+param **.eth[*].queueType "\"DropTailQueue\""
+param **.ppp[*].queue.frameCapacity 10
+param **.ppp[*].queueType "\"DropTailQueue\""
+param **.server1.numTcpApps 1
+param **.server1.tcpApp[*].typename "\"TCPGenericSrvApp\""
+param **.server1.tcpApp[0].localAddress "\"game1\""
+param **.server1.tcpApp[0].localPort 80
+param **.server2.numTcpApps 1
+param **.server2.tcpApp[*].typename "\"TCPGenericSrvApp\""
+param **.server2.tcpApp[0].localAddress "\"game2\""
+param **.server2.tcpApp[0].localPort 80
 param *.*.networkLayer.arpType "\"GlobalARP\""
 param *.*.routingTable.netmaskRoutes "\"\""
-param *.configurator.config "xmldoc(\"adressage.xml\")"
 param *.configurator.dumpAddresses true
 param *.configurator.dumpLinks true
 param *.configurator.dumpRoutes true
@@ -29,157 +62,123 @@ param *.visualizer.interfaceTableVisualizer.nodeFilter "\"not (*switch* or *Swit
 param *.visualizer.routingTableVisualizer.destinationFilter "\"server1\""
 param *.visualizer.routingTableVisualizer.displayRoutingTables true
 
-vector 18  Network.client1.pingApp[0]  pingTxSeq:vector  ETV
-attr interpolationmode  none
-attr title  "ping tx seq, vector"
-vector 12  Network.client1.eth[0].encap  encapPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, vector(packetBytes)"
-vector 8  Network.client1.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 3  Network.client1.eth[0].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 120  Network.switch1.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 121  Network.switch1.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 135  Network.switch1.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 146  Network.switch1.eth[2].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 130  Network.switch1.eth[1].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 141  Network.switch1.eth[2].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 31  Network.client2.eth[0].mac  droppedPkNotForUs:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, vector(packetBytes)"
-vector 51  Network.router.eth[1].mac  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 52  Network.router.eth[1].mac  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 60  Network.router.eth[1].encap  decapPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, vector(packetBytes)"
-vector 47  Network.router.eth[0].encap  encapPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, vector(packetBytes)"
-vector 43  Network.router.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 38  Network.router.eth[0].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 66  Network.router1.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 67  Network.router1.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 75  Network.router1.eth[0].encap  decapPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, vector(packetBytes)"
-vector 86  Network.router1.eth[1].encap  encapPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, vector(packetBytes)"
-vector 82  Network.router1.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 77  Network.router1.eth[1].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 153  Network.switch2.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 154  Network.switch2.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 168  Network.switch2.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 179  Network.switch2.eth[2].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 163  Network.switch2.eth[1].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 174  Network.switch2.eth[2].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 93  Network.server1.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 94  Network.server1.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 115  Network.server2.eth[0].mac  droppedPkNotForUs:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, vector(packetBytes)"
-vector 102  Network.server1.eth[0].encap  decapPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, vector(packetBytes)"
-vector 101  Network.server1.eth[0].encap  encapPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, vector(packetBytes)"
-vector 97  Network.server1.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, vector(packetBytes)"
-vector 92  Network.server1.eth[0].mac  txPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, vector(packetBytes)"
-vector 164  Network.switch2.eth[1].mac  rxPkOk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  rxPkOk
-attr title  "packets received OK, vector(packetBytes)"
-vector 165  Network.switch2.eth[1].mac  passedUpPk:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr source  packetSentToUpper
-attr title  "packets passed to higher layer, vector(packetBytes)"
-vector 157  Network.switch2.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
-attr interpolationmode  none
-attr s
+vector 2  Network.client1.ethg$o[0].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 8  Network.client2.ethg$o[0].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 0  Network.router.ethg$o[0].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 3  Network.router.ethg$o[1].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 9  Network.router.ethg$o[2].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 1  Network.router1.ethg$o[0].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 4  Network.router1.ethg$o[1].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 6  Network.router1.ethg$o[2].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 5  Network.server1.ethg$o[0].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 7  Network.server2.ethg$o[0].channel  busy:vector  ETV
+attr interpolationmode  sample-hold
+attr source  channelBusy
+vector 16  Network.client1.eth[0].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 20  Network.client1.eth[0].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 42  Network.client2.eth[0].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 46  Network.client2.eth[0].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 68  Network.router.eth[0].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 72  Network.router.eth[0].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 88  Network.router.eth[1].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 92  Network.router.eth[1].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 108  Network.router.eth[2].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 112  Network.router.eth[2].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 131  Network.router1.eth[0].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 135  Network.router1.eth[0].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 151  Network.router1.eth[1].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 155  Network.router1.eth[1].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 171  Network.router1.eth[2].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 175  Network.router1.eth[2].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 194  Network.server1.eth[0].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 198  Network.server1.eth[0].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 220  Network.server2.eth[0].queue.pauseQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 224  Network.server2.eth[0].queue.dataQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+0	6777 9 0 0 0 0 1 0 0 0 0
+1	6786 9 0 0 0 0 1 0 0 0 0
+2	6795 9 0 0 0 0 1 0 0 0 0
+3	6804 9 0 0 0 0 1 0 0 0 0
+4	6813 9 0 0 0 0 1 0 0 0 0
+5	6822 9 0 0 0 0 1 0 0 0 0
+6	6831 9 0 0 0 0 1 0 0 0 0
+7	6840 9 0 0 0 0 1 0 0 0 0
+8	6849 9 0 0 0 0 1 0 0 0 0
+9	6858 9 0 0 0 0 1 0 0 0 0
+16	6867 10 0 0 0 0 1 0 0 0 0
+20	6877 10 0 0 0 0 1 0 0 0 0
+42	6887 10 0 0 0 0 1 0 0 0 0
+46	6897 10 0 0 0 0 1 0 0 0 0
+68	6907 10 0 0 0 0 1 0 0 0 0
+72	6917 10 0 0 0 0 1 0 0 0 0
+88	6927 10 0 0 0 0 1 0 0 0 0
+92	6937 10 0 0 0 0 1 0 0 0 0
+108	6947 11 0 0 0 0 1 0 0 0 0
+112	6958 11 0 0 0 0 1 0 0 0 0
+131	6969 11 0 0 0 0 1 0 0 0 0
+135	6980 11 0 0 0 0 1 0 0 0 0
+151	6991 11 0 0 0 0 1 0 0 0 0
+155	7002 11 0 0 0 0 1 0 0 0 0
+171	7013 11 0 0 0 0 1 0 0 0 0
+175	7024 11 0 0 0 0 1 0 0 0 0
+194	7035 11 0 0 0 0 1 0 0 0 0
+198	7046 11 0 0 0 0 1 0 0 0 0
+220	7057 11 0 0 0 0 1 0 0 0 0
+224	7068 11 0 0 0 0 1 0 0 0 0
