@@ -1,5 +1,6 @@
 package tcpcongestion.simulations;
 
+import inet.common.misc.NetAnimTrace;
 import inet.networklayer.configurator.ipv4.IPv4NetworkConfigurator;
 import inet.node.ethernet.Eth100M;
 import inet.node.ethernet.Eth10M;
@@ -9,6 +10,7 @@ import inet.node.inet.StandardHost;
 import inet.visualizer.integrated.IntegratedCanvasVisualizer;
 import inet.visualizer.linklayer.DataLinkVisualizer;
 import inet.visualizer.linklayer.InterfaceTableCanvasVisualizer;
+import ned.DatarateChannel;
 
 
 @license(LGPL);
@@ -47,11 +49,15 @@ network Network
         visualizer: IntegratedCanvasVisualizer {
             @display("p=155,0");
         }
+        netAnimTrace: NetAnimTrace {
+            @display("p=155,41");
+        }
+
     connections:
-        router.ethg++ <--> Eth100M <--> router1.ethg++;
-        client1.ethg++ <--> Eth100M <--> router.ethg++;
-        router1.ethg++ <--> Eth100M <--> server1.ethg++;
-        router1.ethg++ <--> Eth100M <--> server2.ethg++;
-        client2.ethg++ <--> Eth100M <--> router.ethg++;
+        client1.pppg++ <--> DatarateChannel {  datarate = 10Mbps; } <--> router.pppg++;
+        client2.pppg++ <--> DatarateChannel {  datarate = 10Mbps; } <--> router.pppg++;
+        router.pppg++ <--> DatarateChannel {  datarate = 5Mbps; } <--> router1.pppg++;
+        router1.pppg++ <--> DatarateChannel {  datarate = 10Mbps; } <--> server1.pppg++;
+        router1.pppg++ <--> DatarateChannel {  datarate = 10Mbps; } <--> server2.pppg++;
 }
 

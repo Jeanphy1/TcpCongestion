@@ -1,14 +1,14 @@
 version 2
-run General-0-20171208-14:53:21-8928
+run General-0-20171221-17:13:49-12012
 attr configname General
-attr datetime 20171208-14:53:21
+attr datetime 20171221-17:13:49
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 8928
+attr processid 12012
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -16,7 +16,7 @@ attr runnumber 0
 attr seedset 0
 param **.client1.numTcpApps 1
 param **.client1.tcpApp[*].active true
-param **.client1.tcpApp[*].connectAddress "\"game1\""
+param **.client1.tcpApp[*].connectAddress "\"server1\""
 param **.client1.tcpApp[*].connectPort 80
 param **.client1.tcpApp[*].localAddress "\"\""
 param **.client1.tcpApp[*].localPort 2000
@@ -28,7 +28,7 @@ param **.client1.tcpApp[*].tSend 1.1s
 param **.client1.tcpApp[*].typename "\"TCPSessionApp\""
 param **.client2.numTcpApps 1
 param **.client2.tcpApp[*].active true
-param **.client2.tcpApp[*].connectAddress "\"game2\""
+param **.client2.tcpApp[*].connectAddress "\"server2\""
 param **.client2.tcpApp[*].connectPort 80
 param **.client2.tcpApp[*].localAddress "\"\""
 param **.client2.tcpApp[*].localPort 2000
@@ -44,12 +44,26 @@ param **.ppp[*].queue.frameCapacity 10
 param **.ppp[*].queueType "\"DropTailQueue\""
 param **.server1.numTcpApps 1
 param **.server1.tcpApp[*].typename "\"TCPGenericSrvApp\""
-param **.server1.tcpApp[0].localAddress "\"game1\""
+param **.server1.tcpApp[0].localAddress "\"\""
 param **.server1.tcpApp[0].localPort 80
 param **.server2.numTcpApps 1
 param **.server2.tcpApp[*].typename "\"TCPGenericSrvApp\""
-param **.server2.tcpApp[0].localAddress "\"game2\""
+param **.server2.tcpApp[0].localAddress "\"\""
 param **.server2.tcpApp[0].localPort 80
+param **.tcp.advertisedWindow 65535
+param **.tcp.delayedAcksEnabled false
+param **.tcp.increasedIWEnabled false
+param **.tcp.limitedTransmitEnabled false
+param **.tcp.mss 1452
+param **.tcp.nagleEnabled true
+param **.tcp.receiveQueueClass default
+param **.tcp.recordStats true
+param **.tcp.sackSupport false
+param **.tcp.sendQueueClass default
+param **.tcp.tcpAlgorithmClass default
+param **.tcp.timestampSupport true
+param **.tcp.windowScalingSupport false
+param **.tcpType "\"TCP\""
 param *.*.networkLayer.arpType "\"GlobalARP\""
 param *.*.routingTable.netmaskRoutes "\"\""
 param *.configurator.dumpAddresses true
@@ -61,56 +75,6 @@ param *.visualizer.interfaceTableVisualizer.nodeFilter "\"not (*switch* or *Swit
 param *.visualizer.routingTableVisualizer.destinationFilter "\"server1\""
 param *.visualizer.routingTableVisualizer.displayRoutingTables true
 
-scalar Network.client1.ethg$o[0].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.client1.ethg$o[0].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.client2.ethg$o[0].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.client2.ethg$o[0].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.router.ethg$o[0].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.router.ethg$o[0].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.router.ethg$o[1].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.router.ethg$o[1].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.router.ethg$o[2].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.router.ethg$o[2].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.router1.ethg$o[0].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.router1.ethg$o[0].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.router1.ethg$o[1].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.router1.ethg$o[1].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.router1.ethg$o[2].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.router1.ethg$o[2].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.server1.ethg$o[0].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.server1.ethg$o[0].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
-scalar Network.server2.ethg$o[0].channel 	utilization:last 	nan
-attr source  timeavg(channelBusy)
-scalar Network.server2.ethg$o[0].channel 	throughput:last 	nan
-attr source  sumPerDuration(packetBits(messageSent))
-attr unit  bps
 scalar Network.client1.lo0.lo 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
@@ -135,229 +99,126 @@ scalar Network.client1.lo0.lo 	passedUpPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.client1.eth[0].queue.pauseQueue 	queueLength:max 	0
+scalar Network.client1.ppp[0].queue 	queueLength:max 	3
 attr interpolationmode  sample-hold
 attr title  "queue length, max"
-scalar Network.client1.eth[0].queue.pauseQueue 	queueLength:timeavg 	nan
+scalar Network.client1.ppp[0].queue 	queueLength:timeavg 	0.02354136
 attr interpolationmode  sample-hold
 attr title  "queue length, timeavg"
-statistic Network.client1.eth[0].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
+statistic Network.client1.ppp[0].queue 	queueingTime:histogram
+field count 1726
+field mean 0.00013639258400927
+field stddev 0.00039564693772413
+field sum 0.2354136
+field sqrsum 0.00030213413056
+field min 0
+field max 0.0035976
 attr interpolationmode  none
 attr title  "queueing time, histogram"
 bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.client1.eth[0].queue.pauseQueue 	dropPk:count 	0
+bin	-0.0017988	0
+bin	-0.00155896	0
+bin	-0.00131912	0
+bin	-0.00107928	0
+bin	-0.00083944	0
+bin	-0.0005996	0
+bin	-0.00035976	0
+bin	-0.00011992	1535
+bin	0.00011992	0
+bin	0.00035976	1
+bin	0.0005996	0
+bin	0.00083944	0
+bin	0.00107928	185
+bin	0.00131912	0
+bin	0.00155896	0
+bin	0.0017988	0
+bin	0.00203864	0
+bin	0.00227848	4
+bin	0.00251832	0
+bin	0.00275816	0
+bin	0.002998	0
+bin	0.00323784	0
+bin	0.00347768	1
+bin	0.00371752	0
+bin	0.00395736	0
+bin	0.0041972	0
+bin	0.00443704	0
+bin	0.00467688	0
+bin	0.00491672	0
+bin	0.00515656	0
+bin	0.0053964	0
+scalar Network.client1.ppp[0].queue 	dropPk:count 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, count"
-scalar Network.client1.eth[0].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
+scalar Network.client1.ppp[0].queue 	dropPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, sum(packetBytes)"
-scalar Network.client1.eth[0].queue.pauseQueue 	rcvdPk:count 	0
+scalar Network.client1.ppp[0].queue 	rcvdPk:count 	1726
 attr interpolationmode  none
 attr title  "received packets, count"
-scalar Network.client1.eth[0].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
+scalar Network.client1.ppp[0].queue 	rcvdPk:sum(packetBytes) 	2568072
 attr interpolationmode  none
 attr title  "received packets, sum(packetBytes)"
-scalar Network.client1.eth[0].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.client1.eth[0].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.client1.eth[0].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.client1.eth[0].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.client1.eth[0].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.client1.eth[0].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.client1.eth[0].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.client1.eth[0].mac 	"simulated time" 	0
-scalar Network.client1.eth[0].mac 	full-duplex 	1
-scalar Network.client1.eth[0].mac 	"rx channel idle (%)" 	nan
-scalar Network.client1.eth[0].mac 	"rx channel utilization (%)" 	nan
-scalar Network.client1.eth[0].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.client1.eth[0].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.client1.eth[0].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.client1.eth[0].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.client1.eth[0].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.client1.eth[0].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.client1.eth[0].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, count"
-scalar Network.client1.eth[0].mac 	txPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.client1.eth[0].mac 	droppedPkNotForUs:count 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.client1.eth[0].mac 	droppedPkNotForUs:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.client1.eth[0].mac 	droppedPkBitError:count 	0
+scalar Network.client1.ppp[0].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.client1.eth[0].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.client1.ppp[0].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.client1.eth[0].mac 	droppedPkIfaceDown:count 	0
+scalar Network.client1.ppp[0].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.client1.eth[0].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.client1.ppp[0].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.client1.eth[0].mac 	rxPkOk:count 	0
+scalar Network.client1.ppp[0].ppp 	rxPkOk:count 	1657
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.client1.eth[0].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.client1.ppp[0].ppp 	rxPkOk:sum(packetBytes) 	97767
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.client1.eth[0].mac 	passedUpPk:count 	0
+scalar Network.client1.ppp[0].ppp 	txState:timeavg 	0.20641232
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.client1.ppp[0].ppp 	rcvdPkFromHL:count 	1726
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.client1.ppp[0].ppp 	rcvdPkFromHL:sum(packetBytes) 	2568072
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.client1.ppp[0].ppp 	passedUpPk:count 	1657
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.client1.eth[0].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.client1.ppp[0].ppp 	passedUpPk:sum(packetBytes) 	86168
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.client1.eth[0].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.client1.eth[0].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.client1.eth[0].encap 	decapPk:count 	0
+scalar Network.client1.ppp[0].ppp 	txPk:count 	1726
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.client1.eth[0].encap 	decapPk:sum(packetBytes) 	0
+attr source  packetSentToLower
+attr title  "packets transmitted, count"
+scalar Network.client1.ppp[0].ppp 	txPk:sum(packetBytes) 	2580154
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.client1.eth[0].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.client1.eth[0].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
+attr source  packetSentToLower
+attr title  "packets transmitted, sum(packetBytes)"
 scalar Network.client1.tcpApp[0] 	bytesRcvd 	0
-scalar Network.client1.tcpApp[0] 	bytesSent 	0
-scalar Network.client1.tcpApp[0] 	sentPk:count 	0
+scalar Network.client1.tcpApp[0] 	bytesSent 	524288000
+scalar Network.client1.tcpApp[0] 	sentPk:count 	1
 attr interpolationmode  none
 attr source  sentPk
 attr title  "packets sent, count"
-scalar Network.client1.tcpApp[0] 	sentPk:sum(packetBytes) 	0
+scalar Network.client1.tcpApp[0] 	sentPk:sum(packetBytes) 	524288000
 attr interpolationmode  none
 attr source  sentPk
 attr title  "packets sent, sum(packetBytes)"
@@ -437,229 +298,126 @@ scalar Network.client2.lo0.lo 	passedUpPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.client2.eth[0].queue.pauseQueue 	queueLength:max 	0
+scalar Network.client2.ppp[0].queue 	queueLength:max 	2
 attr interpolationmode  sample-hold
 attr title  "queue length, max"
-scalar Network.client2.eth[0].queue.pauseQueue 	queueLength:timeavg 	nan
+scalar Network.client2.ppp[0].queue 	queueLength:timeavg 	0.02160112
 attr interpolationmode  sample-hold
 attr title  "queue length, timeavg"
-statistic Network.client2.eth[0].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
+statistic Network.client2.ppp[0].queue 	queueingTime:histogram
+field count 1711
+field mean 0.00012624850964348
+field stddev 0.00036981133303767
+field sum 0.2160112
+field sqrsum 0.00026113141376
+field min 0
+field max 0.0023984
 attr interpolationmode  none
 attr title  "queueing time, histogram"
 bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.client2.eth[0].queue.pauseQueue 	dropPk:count 	0
+bin	-0.0011992	0
+bin	-0.0010393066666667	0
+bin	-0.00087941333333333	0
+bin	-0.00071952	0
+bin	-0.00055962666666667	0
+bin	-0.00039973333333333	0
+bin	-0.00023984	0
+bin	-7.9946666666667e-005	1531
+bin	7.9946666666667e-005	0
+bin	0.00023984	0
+bin	0.00039973333333333	0
+bin	0.00055962666666667	1
+bin	0.00071952	1
+bin	0.00087941333333333	0
+bin	0.0010393066666667	177
+bin	0.0011992	0
+bin	0.0013590933333333	0
+bin	0.0015189866666667	0
+bin	0.00167888	0
+bin	0.0018387733333333	0
+bin	0.0019986666666667	0
+bin	0.00215856	0
+bin	0.0023184533333333	1
+bin	0.0024783466666667	0
+bin	0.00263824	0
+bin	0.0027981333333333	0
+bin	0.0029580266666667	0
+bin	0.00311792	0
+bin	0.0032778133333333	0
+bin	0.0034377066666667	0
+bin	0.0035976	0
+scalar Network.client2.ppp[0].queue 	dropPk:count 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, count"
-scalar Network.client2.eth[0].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
+scalar Network.client2.ppp[0].queue 	dropPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, sum(packetBytes)"
-scalar Network.client2.eth[0].queue.pauseQueue 	rcvdPk:count 	0
+scalar Network.client2.ppp[0].queue 	rcvdPk:count 	1711
 attr interpolationmode  none
 attr title  "received packets, count"
-scalar Network.client2.eth[0].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
+scalar Network.client2.ppp[0].queue 	rcvdPk:sum(packetBytes) 	2544236
 attr interpolationmode  none
 attr title  "received packets, sum(packetBytes)"
-scalar Network.client2.eth[0].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.client2.eth[0].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.client2.eth[0].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.client2.eth[0].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.client2.eth[0].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.client2.eth[0].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.client2.eth[0].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.client2.eth[0].mac 	"simulated time" 	0
-scalar Network.client2.eth[0].mac 	full-duplex 	1
-scalar Network.client2.eth[0].mac 	"rx channel idle (%)" 	nan
-scalar Network.client2.eth[0].mac 	"rx channel utilization (%)" 	nan
-scalar Network.client2.eth[0].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.client2.eth[0].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.client2.eth[0].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.client2.eth[0].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.client2.eth[0].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.client2.eth[0].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.client2.eth[0].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, count"
-scalar Network.client2.eth[0].mac 	txPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.client2.eth[0].mac 	droppedPkNotForUs:count 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.client2.eth[0].mac 	droppedPkNotForUs:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.client2.eth[0].mac 	droppedPkBitError:count 	0
+scalar Network.client2.ppp[0].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.client2.eth[0].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.client2.ppp[0].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.client2.eth[0].mac 	droppedPkIfaceDown:count 	0
+scalar Network.client2.ppp[0].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.client2.eth[0].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.client2.ppp[0].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.client2.eth[0].mac 	rxPkOk:count 	0
+scalar Network.client2.ppp[0].ppp 	rxPkOk:count 	1645
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.client2.eth[0].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.client2.ppp[0].ppp 	rxPkOk:sum(packetBytes) 	97059
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.client2.eth[0].mac 	passedUpPk:count 	0
+scalar Network.client2.ppp[0].ppp 	txState:timeavg 	0.20449704
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.client2.ppp[0].ppp 	rcvdPkFromHL:count 	1711
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.client2.ppp[0].ppp 	rcvdPkFromHL:sum(packetBytes) 	2544236
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.client2.ppp[0].ppp 	passedUpPk:count 	1645
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.client2.eth[0].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.client2.ppp[0].ppp 	passedUpPk:sum(packetBytes) 	85544
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.client2.eth[0].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.client2.eth[0].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.client2.eth[0].encap 	decapPk:count 	0
+scalar Network.client2.ppp[0].ppp 	txPk:count 	1711
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.client2.eth[0].encap 	decapPk:sum(packetBytes) 	0
+attr source  packetSentToLower
+attr title  "packets transmitted, count"
+scalar Network.client2.ppp[0].ppp 	txPk:sum(packetBytes) 	2556213
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.client2.eth[0].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.client2.eth[0].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
+attr source  packetSentToLower
+attr title  "packets transmitted, sum(packetBytes)"
 scalar Network.client2.tcpApp[0] 	bytesRcvd 	0
-scalar Network.client2.tcpApp[0] 	bytesSent 	0
-scalar Network.client2.tcpApp[0] 	sentPk:count 	0
+scalar Network.client2.tcpApp[0] 	bytesSent 	524288000
+scalar Network.client2.tcpApp[0] 	sentPk:count 	1
 attr interpolationmode  none
 attr source  sentPk
 attr title  "packets sent, count"
-scalar Network.client2.tcpApp[0] 	sentPk:sum(packetBytes) 	0
+scalar Network.client2.tcpApp[0] 	sentPk:sum(packetBytes) 	524288000
 attr interpolationmode  none
 attr source  sentPk
 attr title  "packets sent, sum(packetBytes)"
@@ -739,20 +497,20 @@ scalar Network.router.lo0.lo 	passedUpPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router.eth[0].queue.pauseQueue 	queueLength:max 	0
+scalar Network.router.ppp[0].queue 	queueLength:max 	0
 attr interpolationmode  sample-hold
 attr title  "queue length, max"
-scalar Network.router.eth[0].queue.pauseQueue 	queueLength:timeavg 	nan
+scalar Network.router.ppp[0].queue 	queueLength:timeavg 	0
 attr interpolationmode  sample-hold
 attr title  "queue length, timeavg"
-statistic Network.router.eth[0].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
+statistic Network.router.ppp[0].queue 	queueingTime:histogram
+field count 1657
+field mean 0
+field stddev 0
 field sum 0
 field sqrsum 0
-field min nan
-field max nan
+field min 0
+field max 0
 attr interpolationmode  none
 attr title  "queueing time, histogram"
 bin	-INF	0
@@ -771,7 +529,7 @@ bin	-0.13333333333333	0
 bin	-0.1	0
 bin	-0.066666666666667	0
 bin	-0.033333333333333	0
-bin	0	0
+bin	0	1657
 bin	0.033333333333333	0
 bin	0.066666666666667	0
 bin	0.1	0
@@ -787,606 +545,297 @@ bin	0.4	0
 bin	0.43333333333333	0
 bin	0.46666666666667	0
 bin	0.5	0
-scalar Network.router.eth[0].queue.pauseQueue 	dropPk:count 	0
+scalar Network.router.ppp[0].queue 	dropPk:count 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, count"
-scalar Network.router.eth[0].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
+scalar Network.router.ppp[0].queue 	dropPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router.eth[0].queue.pauseQueue 	rcvdPk:count 	0
+scalar Network.router.ppp[0].queue 	rcvdPk:count 	1657
 attr interpolationmode  none
 attr title  "received packets, count"
-scalar Network.router.eth[0].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
+scalar Network.router.ppp[0].queue 	rcvdPk:sum(packetBytes) 	86168
 attr interpolationmode  none
 attr title  "received packets, sum(packetBytes)"
-scalar Network.router.eth[0].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router.eth[0].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router.eth[0].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router.eth[0].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router.eth[0].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router.eth[0].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router.eth[0].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router.eth[0].mac 	"simulated time" 	0
-scalar Network.router.eth[0].mac 	full-duplex 	1
-scalar Network.router.eth[0].mac 	"rx channel idle (%)" 	nan
-scalar Network.router.eth[0].mac 	"rx channel utilization (%)" 	nan
-scalar Network.router.eth[0].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.router.eth[0].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.router.eth[0].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.router.eth[0].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.router.eth[0].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.router.eth[0].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.router.eth[0].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, count"
-scalar Network.router.eth[0].mac 	txPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.router.eth[0].mac 	droppedPkNotForUs:count 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.router.eth[0].mac 	droppedPkNotForUs:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.router.eth[0].mac 	droppedPkBitError:count 	0
+scalar Network.router.ppp[0].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.router.eth[0].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.router.ppp[0].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.router.eth[0].mac 	droppedPkIfaceDown:count 	0
+scalar Network.router.ppp[0].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.router.eth[0].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.router.ppp[0].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.router.eth[0].mac 	rxPkOk:count 	0
+scalar Network.router.ppp[0].ppp 	rxPkOk:count 	1726
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.router.eth[0].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.router.ppp[0].ppp 	rxPkOk:sum(packetBytes) 	2580154
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.router.eth[0].mac 	passedUpPk:count 	0
+scalar Network.router.ppp[0].ppp 	txState:timeavg 	0.0078213599999998
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.router.ppp[0].ppp 	rcvdPkFromHL:count 	1657
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.router.ppp[0].ppp 	rcvdPkFromHL:sum(packetBytes) 	86168
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.router.ppp[0].ppp 	passedUpPk:count 	1726
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.router.eth[0].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.router.ppp[0].ppp 	passedUpPk:sum(packetBytes) 	2568072
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router.eth[0].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.router.eth[0].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.router.eth[0].encap 	decapPk:count 	0
+scalar Network.router.ppp[0].ppp 	txPk:count 	1657
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.router.eth[0].encap 	decapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.router.eth[0].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.router.eth[0].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
-scalar Network.router.eth[1].queue.pauseQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router.eth[1].queue.pauseQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router.eth[1].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router.eth[1].queue.pauseQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router.eth[1].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router.eth[1].queue.pauseQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router.eth[1].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router.eth[1].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router.eth[1].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router.eth[1].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router.eth[1].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router.eth[1].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router.eth[1].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router.eth[1].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router.eth[1].mac 	"simulated time" 	0
-scalar Network.router.eth[1].mac 	full-duplex 	1
-scalar Network.router.eth[1].mac 	"rx channel idle (%)" 	nan
-scalar Network.router.eth[1].mac 	"rx channel utilization (%)" 	nan
-scalar Network.router.eth[1].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.router.eth[1].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.router.eth[1].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.router.eth[1].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.router.eth[1].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.router.eth[1].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.router.eth[1].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, count"
-scalar Network.router.eth[1].mac 	txPk:sum(packetBytes) 	0
+scalar Network.router.ppp[0].ppp 	txPk:sum(packetBytes) 	97767
 attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.router.eth[1].mac 	droppedPkNotForUs:count 	0
+scalar Network.router.ppp[1].queue 	queueLength:max 	0
+attr interpolationmode  sample-hold
+attr title  "queue length, max"
+scalar Network.router.ppp[1].queue 	queueLength:timeavg 	0
+attr interpolationmode  sample-hold
+attr title  "queue length, timeavg"
+statistic Network.router.ppp[1].queue 	queueingTime:histogram
+field count 1645
+field mean 0
+field stddev 0
+field sum 0
+field sqrsum 0
+field min 0
+field max 0
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.router.eth[1].mac 	droppedPkNotForUs:sum(packetBytes) 	0
+attr title  "queueing time, histogram"
+bin	-INF	0
+bin	-0.5	0
+bin	-0.46666666666667	0
+bin	-0.43333333333333	0
+bin	-0.4	0
+bin	-0.36666666666667	0
+bin	-0.33333333333333	0
+bin	-0.3	0
+bin	-0.26666666666667	0
+bin	-0.23333333333333	0
+bin	-0.2	0
+bin	-0.16666666666667	0
+bin	-0.13333333333333	0
+bin	-0.1	0
+bin	-0.066666666666667	0
+bin	-0.033333333333333	0
+bin	0	1645
+bin	0.033333333333333	0
+bin	0.066666666666667	0
+bin	0.1	0
+bin	0.13333333333333	0
+bin	0.16666666666667	0
+bin	0.2	0
+bin	0.23333333333333	0
+bin	0.26666666666667	0
+bin	0.3	0
+bin	0.33333333333333	0
+bin	0.36666666666667	0
+bin	0.4	0
+bin	0.43333333333333	0
+bin	0.46666666666667	0
+bin	0.5	0
+scalar Network.router.ppp[1].queue 	dropPk:count 	0
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.router.eth[1].mac 	droppedPkBitError:count 	0
+attr source  dropPkByQueue
+attr title  "dropped packets, count"
+scalar Network.router.ppp[1].queue 	dropPk:sum(packetBytes) 	0
+attr interpolationmode  none
+attr source  dropPkByQueue
+attr title  "dropped packets, sum(packetBytes)"
+scalar Network.router.ppp[1].queue 	rcvdPk:count 	1645
+attr interpolationmode  none
+attr title  "received packets, count"
+scalar Network.router.ppp[1].queue 	rcvdPk:sum(packetBytes) 	85544
+attr interpolationmode  none
+attr title  "received packets, sum(packetBytes)"
+scalar Network.router.ppp[1].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.router.eth[1].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.router.ppp[1].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.router.eth[1].mac 	droppedPkIfaceDown:count 	0
+scalar Network.router.ppp[1].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.router.eth[1].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.router.ppp[1].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.router.eth[1].mac 	rxPkOk:count 	0
+scalar Network.router.ppp[1].ppp 	rxPkOk:count 	1711
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.router.eth[1].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.router.ppp[1].ppp 	rxPkOk:sum(packetBytes) 	2556213
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.router.eth[1].mac 	passedUpPk:count 	0
+scalar Network.router.ppp[1].ppp 	txState:timeavg 	0.0077647199999998
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.router.ppp[1].ppp 	rcvdPkFromHL:count 	1645
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.router.ppp[1].ppp 	rcvdPkFromHL:sum(packetBytes) 	85544
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.router.ppp[1].ppp 	passedUpPk:count 	1711
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.router.eth[1].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.router.ppp[1].ppp 	passedUpPk:sum(packetBytes) 	2544236
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router.eth[1].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.router.eth[1].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.router.eth[1].encap 	decapPk:count 	0
+scalar Network.router.ppp[1].ppp 	txPk:count 	1645
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.router.eth[1].encap 	decapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.router.eth[1].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.router.eth[1].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
-scalar Network.router.eth[2].queue.pauseQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router.eth[2].queue.pauseQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router.eth[2].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router.eth[2].queue.pauseQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router.eth[2].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router.eth[2].queue.pauseQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router.eth[2].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router.eth[2].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router.eth[2].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router.eth[2].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router.eth[2].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router.eth[2].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router.eth[2].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router.eth[2].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router.eth[2].mac 	"simulated time" 	0
-scalar Network.router.eth[2].mac 	full-duplex 	1
-scalar Network.router.eth[2].mac 	"rx channel idle (%)" 	nan
-scalar Network.router.eth[2].mac 	"rx channel utilization (%)" 	nan
-scalar Network.router.eth[2].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.router.eth[2].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.router.eth[2].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.router.eth[2].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.router.eth[2].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.router.eth[2].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.router.eth[2].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, count"
-scalar Network.router.eth[2].mac 	txPk:sum(packetBytes) 	0
+scalar Network.router.ppp[1].ppp 	txPk:sum(packetBytes) 	97059
 attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.router.eth[2].mac 	droppedPkNotForUs:count 	0
+scalar Network.router.ppp[2].queue 	queueLength:max 	10
+attr interpolationmode  sample-hold
+attr title  "queue length, max"
+scalar Network.router.ppp[2].queue 	queueLength:timeavg 	6.3797437599998
+attr interpolationmode  sample-hold
+attr title  "queue length, timeavg"
+statistic Network.router.ppp[2].queue 	queueingTime:histogram
+field count 3306
+field mean 0.019270329098609
+field stddev 0.004160124955298
+field sum 63.707708
+field sqrsum 1.2848669433005
+field min 0
+field max 0.0237952
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.router.eth[2].mac 	droppedPkNotForUs:sum(packetBytes) 	0
+attr title  "queueing time, histogram"
+bin	-INF	0
+bin	-0.0118976	0
+bin	-0.010311253333333	0
+bin	-0.0087249066666667	0
+bin	-0.00713856	0
+bin	-0.0055522133333333	0
+bin	-0.0039658666666667	0
+bin	-0.00237952	0
+bin	-0.00079317333333333	9
+bin	0.00079317333333333	3
+bin	0.00237952	5
+bin	0.0039658666666667	3
+bin	0.0055522133333333	6
+bin	0.00713856	3
+bin	0.0087249066666667	4
+bin	0.010311253333333	12
+bin	0.0118976	11
+bin	0.013483946666667	755
+bin	0.015070293333333	474
+bin	0.01665664	57
+bin	0.018242986666667	299
+bin	0.019829333333333	569
+bin	0.02141568	54
+bin	0.023002026666667	1042
+bin	0.024588373333333	0
+bin	0.02617472	0
+bin	0.027761066666667	0
+bin	0.029347413333333	0
+bin	0.03093376	0
+bin	0.032520106666667	0
+bin	0.034106453333333	0
+bin	0.0356928	0
+scalar Network.router.ppp[2].queue 	dropPk:count 	121
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.router.eth[2].mac 	droppedPkBitError:count 	0
+attr source  dropPkByQueue
+attr title  "dropped packets, count"
+scalar Network.router.ppp[2].queue 	dropPk:sum(packetBytes) 	180532
+attr interpolationmode  none
+attr source  dropPkByQueue
+attr title  "dropped packets, sum(packetBytes)"
+scalar Network.router.ppp[2].queue 	rcvdPk:count 	3437
+attr interpolationmode  none
+attr title  "received packets, count"
+scalar Network.router.ppp[2].queue 	rcvdPk:sum(packetBytes) 	5112308
+attr interpolationmode  none
+attr title  "received packets, sum(packetBytes)"
+scalar Network.router.ppp[2].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.router.eth[2].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.router.ppp[2].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.router.eth[2].mac 	droppedPkIfaceDown:count 	0
+scalar Network.router.ppp[2].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.router.eth[2].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.router.ppp[2].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.router.eth[2].mac 	rxPkOk:count 	0
+scalar Network.router.ppp[2].ppp 	rxPkOk:count 	3302
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.router.eth[2].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.router.ppp[2].ppp 	rxPkOk:sum(packetBytes) 	194826
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.router.eth[2].mac 	passedUpPk:count 	0
+scalar Network.router.ppp[2].ppp 	txState:timeavg 	0.79026055999996
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.router.ppp[2].ppp 	rcvdPkFromHL:count 	3306
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.router.ppp[2].ppp 	rcvdPkFromHL:sum(packetBytes) 	4916856
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.router.ppp[2].ppp 	passedUpPk:count 	3302
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.router.eth[2].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.router.ppp[2].ppp 	passedUpPk:sum(packetBytes) 	171712
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router.eth[2].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.router.eth[2].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.router.eth[2].encap 	decapPk:count 	0
+scalar Network.router.ppp[2].ppp 	txPk:count 	3306
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.router.eth[2].encap 	decapPk:sum(packetBytes) 	0
+attr source  packetSentToLower
+attr title  "packets transmitted, count"
+scalar Network.router.ppp[2].ppp 	txPk:sum(packetBytes) 	4939998
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.router.eth[2].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.router.eth[2].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
+attr source  packetSentToLower
+attr title  "packets transmitted, sum(packetBytes)"
 scalar Network.router1.lo0.lo 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
@@ -1411,20 +860,20 @@ scalar Network.router1.lo0.lo 	passedUpPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router1.eth[0].queue.pauseQueue 	queueLength:max 	0
+scalar Network.router1.ppp[0].queue 	queueLength:max 	1
 attr interpolationmode  sample-hold
 attr title  "queue length, max"
-scalar Network.router1.eth[0].queue.pauseQueue 	queueLength:timeavg 	nan
+scalar Network.router1.ppp[0].queue 	queueLength:timeavg 	4.56e-006
 attr interpolationmode  sample-hold
 attr title  "queue length, timeavg"
-statistic Network.router1.eth[0].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
+statistic Network.router1.ppp[0].queue 	queueingTime:histogram
+field count 3302
+field mean 1.3809812235009e-008
+field stddev 7.9355367677077e-007
+field sum 4.56e-005
+field sqrsum 2.07936e-009
+field min 0
+field max 4.56e-005
 attr interpolationmode  none
 attr title  "queueing time, histogram"
 bin	-INF	0
@@ -1443,7 +892,7 @@ bin	-0.13333333333333	0
 bin	-0.1	0
 bin	-0.066666666666667	0
 bin	-0.033333333333333	0
-bin	0	0
+bin	0	3302
 bin	0.033333333333333	0
 bin	0.066666666666667	0
 bin	0.1	0
@@ -1459,606 +908,297 @@ bin	0.4	0
 bin	0.43333333333333	0
 bin	0.46666666666667	0
 bin	0.5	0
-scalar Network.router1.eth[0].queue.pauseQueue 	dropPk:count 	0
+scalar Network.router1.ppp[0].queue 	dropPk:count 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, count"
-scalar Network.router1.eth[0].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
+scalar Network.router1.ppp[0].queue 	dropPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router1.eth[0].queue.pauseQueue 	rcvdPk:count 	0
+scalar Network.router1.ppp[0].queue 	rcvdPk:count 	3302
 attr interpolationmode  none
 attr title  "received packets, count"
-scalar Network.router1.eth[0].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
+scalar Network.router1.ppp[0].queue 	rcvdPk:sum(packetBytes) 	171712
 attr interpolationmode  none
 attr title  "received packets, sum(packetBytes)"
-scalar Network.router1.eth[0].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router1.eth[0].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router1.eth[0].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router1.eth[0].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router1.eth[0].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router1.eth[0].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router1.eth[0].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router1.eth[0].mac 	"simulated time" 	0
-scalar Network.router1.eth[0].mac 	full-duplex 	1
-scalar Network.router1.eth[0].mac 	"rx channel idle (%)" 	nan
-scalar Network.router1.eth[0].mac 	"rx channel utilization (%)" 	nan
-scalar Network.router1.eth[0].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.router1.eth[0].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.router1.eth[0].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.router1.eth[0].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.router1.eth[0].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.router1.eth[0].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.router1.eth[0].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, count"
-scalar Network.router1.eth[0].mac 	txPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.router1.eth[0].mac 	droppedPkNotForUs:count 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.router1.eth[0].mac 	droppedPkNotForUs:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.router1.eth[0].mac 	droppedPkBitError:count 	0
+scalar Network.router1.ppp[0].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.router1.eth[0].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.router1.ppp[0].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.router1.eth[0].mac 	droppedPkIfaceDown:count 	0
+scalar Network.router1.ppp[0].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.router1.eth[0].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.router1.ppp[0].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.router1.eth[0].mac 	rxPkOk:count 	0
+scalar Network.router1.ppp[0].ppp 	rxPkOk:count 	3305
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.router1.eth[0].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.router1.ppp[0].ppp 	rxPkOk:sum(packetBytes) 	4938499
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.router1.eth[0].mac 	passedUpPk:count 	0
+scalar Network.router1.ppp[0].ppp 	txState:timeavg 	0.031172159999999
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.router1.ppp[0].ppp 	rcvdPkFromHL:count 	3302
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.router1.ppp[0].ppp 	rcvdPkFromHL:sum(packetBytes) 	171712
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.router1.ppp[0].ppp 	passedUpPk:count 	3305
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.router1.eth[0].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.router1.ppp[0].ppp 	passedUpPk:sum(packetBytes) 	4915364
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router1.eth[0].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.router1.eth[0].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.router1.eth[0].encap 	decapPk:count 	0
+scalar Network.router1.ppp[0].ppp 	txPk:count 	3302
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.router1.eth[0].encap 	decapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.router1.eth[0].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.router1.eth[0].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
-scalar Network.router1.eth[1].queue.pauseQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router1.eth[1].queue.pauseQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router1.eth[1].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router1.eth[1].queue.pauseQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router1.eth[1].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router1.eth[1].queue.pauseQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router1.eth[1].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router1.eth[1].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router1.eth[1].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router1.eth[1].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router1.eth[1].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router1.eth[1].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router1.eth[1].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router1.eth[1].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router1.eth[1].mac 	"simulated time" 	0
-scalar Network.router1.eth[1].mac 	full-duplex 	1
-scalar Network.router1.eth[1].mac 	"rx channel idle (%)" 	nan
-scalar Network.router1.eth[1].mac 	"rx channel utilization (%)" 	nan
-scalar Network.router1.eth[1].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.router1.eth[1].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.router1.eth[1].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.router1.eth[1].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.router1.eth[1].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.router1.eth[1].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.router1.eth[1].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, count"
-scalar Network.router1.eth[1].mac 	txPk:sum(packetBytes) 	0
+scalar Network.router1.ppp[0].ppp 	txPk:sum(packetBytes) 	194826
 attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.router1.eth[1].mac 	droppedPkNotForUs:count 	0
+scalar Network.router1.ppp[1].queue 	queueLength:max 	1
+attr interpolationmode  sample-hold
+attr title  "queue length, max"
+scalar Network.router1.ppp[1].queue 	queueLength:timeavg 	5.04e-006
+attr interpolationmode  sample-hold
+attr title  "queue length, timeavg"
+statistic Network.router1.ppp[1].queue 	queueingTime:histogram
+field count 1658
+field mean 3.0398069963812e-008
+field stddev 1.2377652144798e-006
+field sum 5.04e-005
+field sqrsum 2.54016e-009
+field min 0
+field max 5.04e-005
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.router1.eth[1].mac 	droppedPkNotForUs:sum(packetBytes) 	0
+attr title  "queueing time, histogram"
+bin	-INF	0
+bin	-2.52e-005	0
+bin	-2.184e-005	0
+bin	-1.848e-005	0
+bin	-1.512e-005	0
+bin	-1.176e-005	0
+bin	-8.4e-006	0
+bin	-5.04e-006	0
+bin	-1.68e-006	1657
+bin	1.68e-006	0
+bin	5.04e-006	0
+bin	8.4e-006	0
+bin	1.176e-005	0
+bin	1.512e-005	0
+bin	1.848e-005	0
+bin	2.184e-005	0
+bin	2.52e-005	0
+bin	2.856e-005	0
+bin	3.192e-005	0
+bin	3.528e-005	0
+bin	3.864e-005	0
+bin	4.2e-005	0
+bin	4.536e-005	0
+bin	4.872e-005	1
+bin	5.208e-005	0
+bin	5.544e-005	0
+bin	5.88e-005	0
+bin	6.216e-005	0
+bin	6.552e-005	0
+bin	6.888e-005	0
+bin	7.224e-005	0
+bin	7.56e-005	0
+scalar Network.router1.ppp[1].queue 	dropPk:count 	0
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.router1.eth[1].mac 	droppedPkBitError:count 	0
+attr source  dropPkByQueue
+attr title  "dropped packets, count"
+scalar Network.router1.ppp[1].queue 	dropPk:sum(packetBytes) 	0
+attr interpolationmode  none
+attr source  dropPkByQueue
+attr title  "dropped packets, sum(packetBytes)"
+scalar Network.router1.ppp[1].queue 	rcvdPk:count 	1658
+attr interpolationmode  none
+attr title  "received packets, count"
+scalar Network.router1.ppp[1].queue 	rcvdPk:sum(packetBytes) 	2466616
+attr interpolationmode  none
+attr title  "received packets, sum(packetBytes)"
+scalar Network.router1.ppp[1].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.router1.eth[1].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.router1.ppp[1].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.router1.eth[1].mac 	droppedPkIfaceDown:count 	0
+scalar Network.router1.ppp[1].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.router1.eth[1].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.router1.ppp[1].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.router1.eth[1].mac 	rxPkOk:count 	0
+scalar Network.router1.ppp[1].ppp 	rxPkOk:count 	1657
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.router1.eth[1].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.router1.ppp[1].ppp 	rxPkOk:sum(packetBytes) 	97767
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.router1.eth[1].mac 	passedUpPk:count 	0
+scalar Network.router1.ppp[1].ppp 	txState:timeavg 	0.19825776
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.router1.ppp[1].ppp 	rcvdPkFromHL:count 	1658
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.router1.ppp[1].ppp 	rcvdPkFromHL:sum(packetBytes) 	2466616
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.router1.ppp[1].ppp 	passedUpPk:count 	1657
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.router1.eth[1].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.router1.ppp[1].ppp 	passedUpPk:sum(packetBytes) 	86168
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router1.eth[1].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.router1.eth[1].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.router1.eth[1].encap 	decapPk:count 	0
+scalar Network.router1.ppp[1].ppp 	txPk:count 	1658
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.router1.eth[1].encap 	decapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.router1.eth[1].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.router1.eth[1].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
-scalar Network.router1.eth[2].queue.pauseQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router1.eth[2].queue.pauseQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router1.eth[2].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router1.eth[2].queue.pauseQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router1.eth[2].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router1.eth[2].queue.pauseQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router1.eth[2].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router1.eth[2].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.router1.eth[2].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.router1.eth[2].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.router1.eth[2].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.router1.eth[2].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.router1.eth[2].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.router1.eth[2].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.router1.eth[2].mac 	"simulated time" 	0
-scalar Network.router1.eth[2].mac 	full-duplex 	1
-scalar Network.router1.eth[2].mac 	"rx channel idle (%)" 	nan
-scalar Network.router1.eth[2].mac 	"rx channel utilization (%)" 	nan
-scalar Network.router1.eth[2].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.router1.eth[2].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.router1.eth[2].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.router1.eth[2].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.router1.eth[2].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.router1.eth[2].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.router1.eth[2].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, count"
-scalar Network.router1.eth[2].mac 	txPk:sum(packetBytes) 	0
+scalar Network.router1.ppp[1].ppp 	txPk:sum(packetBytes) 	2478222
 attr interpolationmode  none
-attr source  txPk
+attr source  packetSentToLower
 attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.router1.eth[2].mac 	droppedPkNotForUs:count 	0
+scalar Network.router1.ppp[2].queue 	queueLength:max 	1
+attr interpolationmode  sample-hold
+attr title  "queue length, max"
+scalar Network.router1.ppp[2].queue 	queueLength:timeavg 	0.00016872
+attr interpolationmode  sample-hold
+attr title  "queue length, timeavg"
+statistic Network.router1.ppp[2].queue 	queueingTime:histogram
+field count 1647
+field mean 1.0244080145719e-006
+field stddev 2.9745505585724e-005
+field sum 0.0016872
+field sqrsum 1.45810112e-006
+field min 0
+field max 0.0011016
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.router1.eth[2].mac 	droppedPkNotForUs:sum(packetBytes) 	0
+attr title  "queueing time, histogram"
+bin	-INF	0
+bin	-0.0005508	0
+bin	-0.00047736	0
+bin	-0.00040392	0
+bin	-0.00033048	0
+bin	-0.00025704	0
+bin	-0.0001836	0
+bin	-0.00011016	0
+bin	-3.672e-005	1644
+bin	3.672e-005	1
+bin	0.00011016	0
+bin	0.0001836	0
+bin	0.00025704	0
+bin	0.00033048	0
+bin	0.00040392	0
+bin	0.00047736	1
+bin	0.0005508	0
+bin	0.00062424	0
+bin	0.00069768	0
+bin	0.00077112	0
+bin	0.00084456	0
+bin	0.000918	0
+bin	0.00099144	0
+bin	0.00106488	1
+bin	0.00113832	0
+bin	0.00121176	0
+bin	0.0012852	0
+bin	0.00135864	0
+bin	0.00143208	0
+bin	0.00150552	0
+bin	0.00157896	0
+bin	0.0016524	0
+scalar Network.router1.ppp[2].queue 	dropPk:count 	0
 attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.router1.eth[2].mac 	droppedPkBitError:count 	0
+attr source  dropPkByQueue
+attr title  "dropped packets, count"
+scalar Network.router1.ppp[2].queue 	dropPk:sum(packetBytes) 	0
+attr interpolationmode  none
+attr source  dropPkByQueue
+attr title  "dropped packets, sum(packetBytes)"
+scalar Network.router1.ppp[2].queue 	rcvdPk:count 	1647
+attr interpolationmode  none
+attr title  "received packets, count"
+scalar Network.router1.ppp[2].queue 	rcvdPk:sum(packetBytes) 	2448748
+attr interpolationmode  none
+attr title  "received packets, sum(packetBytes)"
+scalar Network.router1.ppp[2].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.router1.eth[2].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.router1.ppp[2].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.router1.eth[2].mac 	droppedPkIfaceDown:count 	0
+scalar Network.router1.ppp[2].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.router1.eth[2].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.router1.ppp[2].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.router1.eth[2].mac 	rxPkOk:count 	0
+scalar Network.router1.ppp[2].ppp 	rxPkOk:count 	1645
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.router1.eth[2].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.router1.ppp[2].ppp 	rxPkOk:sum(packetBytes) 	97059
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.router1.eth[2].mac 	passedUpPk:count 	0
+scalar Network.router1.ppp[2].ppp 	txState:timeavg 	0.19680296
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.router1.ppp[2].ppp 	rcvdPkFromHL:count 	1647
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.router1.ppp[2].ppp 	rcvdPkFromHL:sum(packetBytes) 	2448748
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.router1.ppp[2].ppp 	passedUpPk:count 	1645
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.router1.eth[2].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.router1.ppp[2].ppp 	passedUpPk:sum(packetBytes) 	85544
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.router1.eth[2].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.router1.eth[2].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.router1.eth[2].encap 	decapPk:count 	0
+scalar Network.router1.ppp[2].ppp 	txPk:count 	1647
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.router1.eth[2].encap 	decapPk:sum(packetBytes) 	0
+attr source  packetSentToLower
+attr title  "packets transmitted, count"
+scalar Network.router1.ppp[2].ppp 	txPk:sum(packetBytes) 	2460277
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.router1.eth[2].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.router1.eth[2].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
+attr source  packetSentToLower
+attr title  "packets transmitted, sum(packetBytes)"
 scalar Network.server1.lo0.lo 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
@@ -2083,20 +1223,20 @@ scalar Network.server1.lo0.lo 	passedUpPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.server1.eth[0].queue.pauseQueue 	queueLength:max 	0
+scalar Network.server1.ppp[0].queue 	queueLength:max 	0
 attr interpolationmode  sample-hold
 attr title  "queue length, max"
-scalar Network.server1.eth[0].queue.pauseQueue 	queueLength:timeavg 	nan
+scalar Network.server1.ppp[0].queue 	queueLength:timeavg 	0
 attr interpolationmode  sample-hold
 attr title  "queue length, timeavg"
-statistic Network.server1.eth[0].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
+statistic Network.server1.ppp[0].queue 	queueingTime:histogram
+field count 1657
+field mean 0
+field stddev 0
 field sum 0
 field sqrsum 0
-field min nan
-field max nan
+field min 0
+field max 0
 attr interpolationmode  none
 attr title  "queueing time, histogram"
 bin	-INF	0
@@ -2115,7 +1255,7 @@ bin	-0.13333333333333	0
 bin	-0.1	0
 bin	-0.066666666666667	0
 bin	-0.033333333333333	0
-bin	0	0
+bin	0	1657
 bin	0.033333333333333	0
 bin	0.066666666666667	0
 bin	0.1	0
@@ -2131,174 +1271,71 @@ bin	0.4	0
 bin	0.43333333333333	0
 bin	0.46666666666667	0
 bin	0.5	0
-scalar Network.server1.eth[0].queue.pauseQueue 	dropPk:count 	0
+scalar Network.server1.ppp[0].queue 	dropPk:count 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, count"
-scalar Network.server1.eth[0].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
+scalar Network.server1.ppp[0].queue 	dropPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, sum(packetBytes)"
-scalar Network.server1.eth[0].queue.pauseQueue 	rcvdPk:count 	0
+scalar Network.server1.ppp[0].queue 	rcvdPk:count 	1657
 attr interpolationmode  none
 attr title  "received packets, count"
-scalar Network.server1.eth[0].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
+scalar Network.server1.ppp[0].queue 	rcvdPk:sum(packetBytes) 	86168
 attr interpolationmode  none
 attr title  "received packets, sum(packetBytes)"
-scalar Network.server1.eth[0].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.server1.eth[0].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.server1.eth[0].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.server1.eth[0].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.server1.eth[0].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.server1.eth[0].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.server1.eth[0].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.server1.eth[0].mac 	"simulated time" 	0
-scalar Network.server1.eth[0].mac 	full-duplex 	1
-scalar Network.server1.eth[0].mac 	"rx channel idle (%)" 	nan
-scalar Network.server1.eth[0].mac 	"rx channel utilization (%)" 	nan
-scalar Network.server1.eth[0].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.server1.eth[0].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.server1.eth[0].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.server1.eth[0].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.server1.eth[0].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.server1.eth[0].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.server1.eth[0].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, count"
-scalar Network.server1.eth[0].mac 	txPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.server1.eth[0].mac 	droppedPkNotForUs:count 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.server1.eth[0].mac 	droppedPkNotForUs:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.server1.eth[0].mac 	droppedPkBitError:count 	0
+scalar Network.server1.ppp[0].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.server1.eth[0].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.server1.ppp[0].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.server1.eth[0].mac 	droppedPkIfaceDown:count 	0
+scalar Network.server1.ppp[0].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.server1.eth[0].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.server1.ppp[0].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.server1.eth[0].mac 	rxPkOk:count 	0
+scalar Network.server1.ppp[0].ppp 	rxPkOk:count 	1658
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.server1.eth[0].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.server1.ppp[0].ppp 	rxPkOk:sum(packetBytes) 	2478222
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.server1.eth[0].mac 	passedUpPk:count 	0
+scalar Network.server1.ppp[0].ppp 	txState:timeavg 	0.0078213599999998
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.server1.ppp[0].ppp 	rcvdPkFromHL:count 	1657
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.server1.ppp[0].ppp 	rcvdPkFromHL:sum(packetBytes) 	86168
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.server1.ppp[0].ppp 	passedUpPk:count 	1658
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.server1.eth[0].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.server1.ppp[0].ppp 	passedUpPk:sum(packetBytes) 	2466616
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.server1.eth[0].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.server1.eth[0].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.server1.eth[0].encap 	decapPk:count 	0
+scalar Network.server1.ppp[0].ppp 	txPk:count 	1657
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.server1.eth[0].encap 	decapPk:sum(packetBytes) 	0
+attr source  packetSentToLower
+attr title  "packets transmitted, count"
+scalar Network.server1.ppp[0].ppp 	txPk:sum(packetBytes) 	97767
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.server1.eth[0].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.server1.eth[0].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
+attr source  packetSentToLower
+attr title  "packets transmitted, sum(packetBytes)"
 scalar Network.server1.tcpApp[0] 	sentPk:count 	0
 attr interpolationmode  none
 attr source  sentPk
@@ -2383,20 +1420,20 @@ scalar Network.server2.lo0.lo 	passedUpPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.server2.eth[0].queue.pauseQueue 	queueLength:max 	0
+scalar Network.server2.ppp[0].queue 	queueLength:max 	0
 attr interpolationmode  sample-hold
 attr title  "queue length, max"
-scalar Network.server2.eth[0].queue.pauseQueue 	queueLength:timeavg 	nan
+scalar Network.server2.ppp[0].queue 	queueLength:timeavg 	0
 attr interpolationmode  sample-hold
 attr title  "queue length, timeavg"
-statistic Network.server2.eth[0].queue.pauseQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
+statistic Network.server2.ppp[0].queue 	queueingTime:histogram
+field count 1645
+field mean 0
+field stddev 0
 field sum 0
 field sqrsum 0
-field min nan
-field max nan
+field min 0
+field max 0
 attr interpolationmode  none
 attr title  "queueing time, histogram"
 bin	-INF	0
@@ -2415,7 +1452,7 @@ bin	-0.13333333333333	0
 bin	-0.1	0
 bin	-0.066666666666667	0
 bin	-0.033333333333333	0
-bin	0	0
+bin	0	1645
 bin	0.033333333333333	0
 bin	0.066666666666667	0
 bin	0.1	0
@@ -2431,174 +1468,71 @@ bin	0.4	0
 bin	0.43333333333333	0
 bin	0.46666666666667	0
 bin	0.5	0
-scalar Network.server2.eth[0].queue.pauseQueue 	dropPk:count 	0
+scalar Network.server2.ppp[0].queue 	dropPk:count 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, count"
-scalar Network.server2.eth[0].queue.pauseQueue 	dropPk:sum(packetBytes) 	0
+scalar Network.server2.ppp[0].queue 	dropPk:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkByQueue
 attr title  "dropped packets, sum(packetBytes)"
-scalar Network.server2.eth[0].queue.pauseQueue 	rcvdPk:count 	0
+scalar Network.server2.ppp[0].queue 	rcvdPk:count 	1645
 attr interpolationmode  none
 attr title  "received packets, count"
-scalar Network.server2.eth[0].queue.pauseQueue 	rcvdPk:sum(packetBytes) 	0
+scalar Network.server2.ppp[0].queue 	rcvdPk:sum(packetBytes) 	85544
 attr interpolationmode  none
 attr title  "received packets, sum(packetBytes)"
-scalar Network.server2.eth[0].queue.dataQueue 	queueLength:max 	0
-attr interpolationmode  sample-hold
-attr title  "queue length, max"
-scalar Network.server2.eth[0].queue.dataQueue 	queueLength:timeavg 	nan
-attr interpolationmode  sample-hold
-attr title  "queue length, timeavg"
-statistic Network.server2.eth[0].queue.dataQueue 	queueingTime:histogram
-field count 0
-field mean nan
-field stddev nan
-field sum 0
-field sqrsum 0
-field min nan
-field max nan
-attr interpolationmode  none
-attr title  "queueing time, histogram"
-bin	-INF	0
-bin	-0.5	0
-bin	-0.46666666666667	0
-bin	-0.43333333333333	0
-bin	-0.4	0
-bin	-0.36666666666667	0
-bin	-0.33333333333333	0
-bin	-0.3	0
-bin	-0.26666666666667	0
-bin	-0.23333333333333	0
-bin	-0.2	0
-bin	-0.16666666666667	0
-bin	-0.13333333333333	0
-bin	-0.1	0
-bin	-0.066666666666667	0
-bin	-0.033333333333333	0
-bin	0	0
-bin	0.033333333333333	0
-bin	0.066666666666667	0
-bin	0.1	0
-bin	0.13333333333333	0
-bin	0.16666666666667	0
-bin	0.2	0
-bin	0.23333333333333	0
-bin	0.26666666666667	0
-bin	0.3	0
-bin	0.33333333333333	0
-bin	0.36666666666667	0
-bin	0.4	0
-bin	0.43333333333333	0
-bin	0.46666666666667	0
-bin	0.5	0
-scalar Network.server2.eth[0].queue.dataQueue 	dropPk:count 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, count"
-scalar Network.server2.eth[0].queue.dataQueue 	dropPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkByQueue
-attr title  "dropped packets, sum(packetBytes)"
-scalar Network.server2.eth[0].queue.dataQueue 	rcvdPk:count 	0
-attr interpolationmode  none
-attr title  "received packets, count"
-scalar Network.server2.eth[0].queue.dataQueue 	rcvdPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr title  "received packets, sum(packetBytes)"
-scalar Network.server2.eth[0].mac 	"simulated time" 	0
-scalar Network.server2.eth[0].mac 	full-duplex 	1
-scalar Network.server2.eth[0].mac 	"rx channel idle (%)" 	nan
-scalar Network.server2.eth[0].mac 	"rx channel utilization (%)" 	nan
-scalar Network.server2.eth[0].mac 	rxPkFromHL:count 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, count"
-scalar Network.server2.eth[0].mac 	rxPkFromHL:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  rxPkFromHL
-attr title  "packet bytes from higher layer, sum(packetBytes)"
-scalar Network.server2.eth[0].mac 	rxPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units received, count"
-scalar Network.server2.eth[0].mac 	rxPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units received, sum"
-scalar Network.server2.eth[0].mac 	txPausePkUnits:count 	0
-attr interpolationmode  none
-attr title  "pause units sent, count"
-scalar Network.server2.eth[0].mac 	txPausePkUnits:sum 	0
-attr interpolationmode  none
-attr title  "pause units sent, sum"
-scalar Network.server2.eth[0].mac 	txPk:count 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, count"
-scalar Network.server2.eth[0].mac 	txPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  txPk
-attr title  "packets transmitted, sum(packetBytes)"
-scalar Network.server2.eth[0].mac 	droppedPkNotForUs:count 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, count"
-scalar Network.server2.eth[0].mac 	droppedPkNotForUs:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  dropPkNotForUs
-attr title  "packets dropped/not for us, sum(packetBytes)"
-scalar Network.server2.eth[0].mac 	droppedPkBitError:count 	0
+scalar Network.server2.ppp[0].ppp 	droppedPkBitError:count 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, count"
-scalar Network.server2.eth[0].mac 	droppedPkBitError:sum(packetBytes) 	0
+scalar Network.server2.ppp[0].ppp 	droppedPkBitError:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkBitError
 attr title  "packets dropped/bit error, sum(packetBytes)"
-scalar Network.server2.eth[0].mac 	droppedPkIfaceDown:count 	0
+scalar Network.server2.ppp[0].ppp 	droppedPkIfaceDown:count 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, count"
-scalar Network.server2.eth[0].mac 	droppedPkIfaceDown:sum(packetBytes) 	0
+scalar Network.server2.ppp[0].ppp 	droppedPkIfaceDown:sum(packetBytes) 	0
 attr interpolationmode  none
 attr source  dropPkIfaceDown
 attr title  "packets dropped/interface down, sum(packetBytes)"
-scalar Network.server2.eth[0].mac 	rxPkOk:count 	0
+scalar Network.server2.ppp[0].ppp 	rxPkOk:count 	1646
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, count"
-scalar Network.server2.eth[0].mac 	rxPkOk:sum(packetBytes) 	0
+scalar Network.server2.ppp[0].ppp 	rxPkOk:sum(packetBytes) 	2458778
 attr interpolationmode  none
 attr source  rxPkOk
 attr title  "packets received OK, sum(packetBytes)"
-scalar Network.server2.eth[0].mac 	passedUpPk:count 	0
+scalar Network.server2.ppp[0].ppp 	txState:timeavg 	0.0077647199999998
+attr interpolationmode  sample-hold
+attr title  "tx state, timeavg"
+scalar Network.server2.ppp[0].ppp 	rcvdPkFromHL:count 	1645
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, count"
+scalar Network.server2.ppp[0].ppp 	rcvdPkFromHL:sum(packetBytes) 	85544
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, sum(packetBytes)"
+scalar Network.server2.ppp[0].ppp 	passedUpPk:count 	1646
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, count"
-scalar Network.server2.eth[0].mac 	passedUpPk:sum(packetBytes) 	0
+scalar Network.server2.ppp[0].ppp 	passedUpPk:sum(packetBytes) 	2447256
 attr interpolationmode  none
 attr source  packetSentToUpper
 attr title  "packets passed to higher layer, sum(packetBytes)"
-scalar Network.server2.eth[0].encap 	pauseSent:count 	0
-attr title  "pause sent, count"
-scalar Network.server2.eth[0].encap 	pauseSent:sum 	0
-attr title  "pause sent, sum"
-scalar Network.server2.eth[0].encap 	decapPk:count 	0
+scalar Network.server2.ppp[0].ppp 	txPk:count 	1645
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, count"
-scalar Network.server2.eth[0].encap 	decapPk:sum(packetBytes) 	0
+attr source  packetSentToLower
+attr title  "packets transmitted, count"
+scalar Network.server2.ppp[0].ppp 	txPk:sum(packetBytes) 	97059
 attr interpolationmode  none
-attr source  decapPk
-attr title  "packets decapsulated, sum(packetBytes)"
-scalar Network.server2.eth[0].encap 	encapPk:count 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, count"
-scalar Network.server2.eth[0].encap 	encapPk:sum(packetBytes) 	0
-attr interpolationmode  none
-attr source  encapPk
-attr title  "packets encapsulated, sum(packetBytes)"
+attr source  packetSentToLower
+attr title  "packets transmitted, sum(packetBytes)"
 scalar Network.server2.tcpApp[0] 	sentPk:count 	0
 attr interpolationmode  none
 attr source  sentPk

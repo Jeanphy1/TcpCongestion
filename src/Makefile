@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for tcpcongestion
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -KINET_PROJ=../../inet -DINET_IMPORT -L$$\(INET_PROJ\)/out/$$\(CONFIGNAME\)/src -lINET
+#  opp_makemake -f --deep -KINET_PROJ=C:/omnetpp-5.1.1/samples/inet -DINET_IMPORT -L$$\(INET_PROJ\)/out/$$\(CONFIGNAME\)/src -lINET
 #
 
 # Name of target to be created (-o option)
@@ -38,7 +38,7 @@ MSGFILES =
 SMFILES =
 
 # Other makefile variables (-K)
-INET_PROJ=../../inet
+INET_PROJ=C:/omnetpp-5.1.1/samples/inet
 
 #------------------------------------------------------------------------------
 
